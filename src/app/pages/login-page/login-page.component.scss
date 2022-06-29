@@ -14,16 +14,23 @@
   &__header {
     display: inline-flex;
     font-size: 30px;
-    height: 100px;
+    height: 50px;
     gap: 40px;
   }
   &__title {
     text-align: center;
     width: 150px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #17368a;
   }
   &__sing-up {
     text-align: center;
     width: 150px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
   }
   &__input-box {
     display: flex;
@@ -43,3 +50,23 @@
     width: 80px;
   }
 }
+.sing-in__sing-up:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #17368a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.sing-in__sing-up:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+
