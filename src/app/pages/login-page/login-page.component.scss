@@ -1,0 +1,45 @@
+.main-login-box {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.sing-in {
+  display: flex;
+
+  &__header {
+    display: inline-flex;
+    font-size: 30px;
+    height: 100px;
+    gap: 40px;
+  }
+  &__title {
+    text-align: center;
+    width: 150px;
+  }
+  &__sing-up {
+    text-align: center;
+    width: 150px;
+  }
+  &__input-box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  &__login-input {
+    text-align: center;
+  }
+  &__password-input {
+    text-align: center;
+
+  }
+  &__button {
+      margin-top: 30px;
+   
+    width: 80px;
+  }
+}

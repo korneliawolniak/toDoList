@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './services/app.routes';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],
