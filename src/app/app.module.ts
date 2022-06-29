@@ -10,6 +10,9 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './services/app.routes';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { routes } from './services/app.routes';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],
