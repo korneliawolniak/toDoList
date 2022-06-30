@@ -12,7 +12,10 @@ import { RouterModule } from '@angular/router';
 import { routes } from './services/app.routes';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { ListComponent } from './components/list/list.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import {MatInputModule} from '@angular/material/input';
     RegisterPageComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatInputModule,
+    DragDropModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],

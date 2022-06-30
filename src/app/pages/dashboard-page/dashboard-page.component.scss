@@ -1,0 +1,74 @@
+.main-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header-box {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  background-color: #17368a;
+  padding-top: 60px;
+}
+.header-title {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  width: 90%;
+  color: white;
+  font-size: 70px;
+  padding-left: 80px;
+}
+.logout-button-box {
+  display: block;
+  height: 90px;
+  width: 10%;
+}
+
+.input-box {
+  display: flex;
+  justify-content: center;
+  background-color: pink;
+  height: 60px;
+}
+.input {
+  padding-top: 5px;
+  width: 500px;
+}
+.add-button {
+  align-self: center;
+  height: 40px;
+}
+.lists-box {
+  display: flex;
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  width: 100%;
+  align-items: stretch;
+  justify-content: center;
+  justify-content: space-between;
+}
+.todo-list {
+  height: auto;
+  width: 33%;
+  background-color: plum;
+}
+.inprogress-list {
+  height: auto;
+  background-color: orange;
+  width: 33%;
+}
+.done-list {
+  height: auto;
+  background-color: green;
+  width: 33%;
+}
+.footer {
+  background-color: yellowgreen;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  color: white;
+  font-size: 40px;
+}
