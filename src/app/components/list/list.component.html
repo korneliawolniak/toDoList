@@ -1,6 +1,17 @@
 <main class="list-box">
   <header class="list-header">Tytuł</header>
-  <ul class = "list">
-    <mat-card class="list-item">Simple card</mat-card>
+  <ul class="list">
+    <li *ngFor="let task of tasksArray">
+      <app-task
+        class="list-item"
+        (toDoClick)="onToDoClick($event)"
+        (inProgressClick)="onImProgressClick($event)"
+        (deleteClick)="onDeleteClick($event)"
+        [task]="task"
+        [isInprogressButtonVisible]="isInprogressButtonVisible"
+        [isDoneButtonVisible]="isDoneButtonVisible"
+        [isDeleteButtonVisible]="isDeleteButtonVisible"
+      ></app-task>
+    </li>
   </ul>
 </main>

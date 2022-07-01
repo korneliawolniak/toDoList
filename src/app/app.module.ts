@@ -16,6 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { ListComponent } from './components/list/list.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TaskComponent } from './components/task/task.component';
+import { FormsModule } from '@angular/forms';
+import { InputComponent } from './components/input/input.component';
+import { ToDoService } from './services/to-do.service';
 
 
 @NgModule({
@@ -25,10 +29,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     LoginPageComponent,
     DashboardPageComponent,
     ErrorPageComponent,
-    ListComponent
+    ListComponent,
+    TaskComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
@@ -38,7 +45,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     DragDropModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [ToDoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

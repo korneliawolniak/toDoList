@@ -13,18 +13,32 @@
     </div>
   </header>
 
-  <div class="input-box">
-    <mat-form-field class="input" appearance="fill">
-      <mat-label>Task</mat-label>
-      <input matInput placeholder="Task do to..." />
-    </mat-form-field>
-    <button class ="add-button"mat-flat-button color="primary">Add</button>
-  </div>
+  <app-input (eventTask)="handleEventTask($event)"></app-input>
 
   <section class="lists-box">
-    <app-list class="todo-list"></app-list>
-    <app-list class="inprogress-list"></app-list>
-    <app-list class="done-list"></app-list>
+    <app-list
+      class="todo-list"
+      (toDoClick)="handleToDo($event)"
+      (deleteClick)="handleDelete($event)"
+      [tasksArray]="allTasksArray.tasksArray"
+      [isInprogressButtonVisible]="true"
+      [isDeleteButtonVisible]="true"
+    ></app-list>
+    <app-list
+      class="inprogress-list"
+      (inProgressClick)="handleInProgress($event)"
+      (deleteClick)="handleDelete($event)"
+      [tasksArray]="allTasksArray.inProgressTasksArray"
+      [isDoneButtonVisible]="true"
+      [isDeleteButtonVisible]="true"
+    ></app-list>
+    <app-list
+      class="done-list"
+      appCheked
+      (deleteClick)="handleDelete($event)"
+      [tasksArray]="allTasksArray.doneTasksArray"
+      [isDeleteButtonVisible]="true"
+    ></app-list>
   </section>
 
   <footer class="footer">USER</footer>
