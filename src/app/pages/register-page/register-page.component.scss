@@ -1,8 +1,8 @@
 :host {
-    height: 100vh;
-    display: flex;
-  }
-  
+  height: 100vh;
+  display: flex;
+}
+
 .main-register-box {
   width: 500px;
   height: 500px;
@@ -29,7 +29,6 @@
     position: relative;
     margin-bottom: 20px;
     border-bottom: 3px solid #17368a;
-
   }
   &__sing-in {
     text-align: center;
@@ -73,7 +72,3 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-
-
-
-

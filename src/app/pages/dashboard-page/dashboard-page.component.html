@@ -7,6 +7,7 @@
         mat-fab
         color="primary"
         aria-label="Icon button with a logout icon"
+        (click)="redirectToLoginPage()"
       >
         <mat-icon>power_settings_new</mat-icon>
       </button>
@@ -14,32 +15,7 @@
   </header>
 
   <app-input (eventTask)="handleEventTask($event)"></app-input>
-
-  <section class="lists-box">
-    <app-list
-      class="todo-list"
-      (toDoClick)="handleToDo($event)"
-      (deleteClick)="handleDelete($event)"
-      [tasksArray]="allTasksArray.tasksArray"
-      [isInprogressButtonVisible]="true"
-      [isDeleteButtonVisible]="true"
-    ></app-list>
-    <app-list
-      class="inprogress-list"
-      (inProgressClick)="handleInProgress($event)"
-      (deleteClick)="handleDelete($event)"
-      [tasksArray]="allTasksArray.inProgressTasksArray"
-      [isDoneButtonVisible]="true"
-      [isDeleteButtonVisible]="true"
-    ></app-list>
-    <app-list
-      class="done-list"
-      appCheked
-      (deleteClick)="handleDelete($event)"
-      [tasksArray]="allTasksArray.doneTasksArray"
-      [isDeleteButtonVisible]="true"
-    ></app-list>
-  </section>
+  <app-list></app-list>
 
   <footer class="footer">USER</footer>
 </main>

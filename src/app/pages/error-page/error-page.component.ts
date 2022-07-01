@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error-page',
   templateUrl: './error-page.component.html',
-  styleUrls: ['./error-page.component.scss']
+  styleUrls: ['./error-page.component.scss'],
 })
-export class ErrorPageComponent implements OnInit {
+export class ErrorPageComponent {
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public redirect() {
+    this.router.navigate(['./dashboard']);
   }
-
 }

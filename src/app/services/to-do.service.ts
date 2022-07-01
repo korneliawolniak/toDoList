@@ -10,10 +10,11 @@ export class ToDoService {
   private tasksArray: Task[] = [];
   private inProgressTasksArray: Task[] = [];
   private doneTasksArray: Task[] = [];
+  public description = '';
 
   private toDoTables$: BehaviorSubject<TasksTables> =
     new BehaviorSubject<TasksTables>({
-      tasksArray: [],
+      toDoArray: [],
       inProgressTasksArray: [],
       doneTasksArray: [],
     });
@@ -21,7 +22,7 @@ export class ToDoService {
   public addTaskToArray(task: string): void {
     const taskObj: Task = {
       id: uuid.v4(),
-      description: task,
+      description: task[0].toUpperCase() + task.substring(1) + '!',
       status: TaskStatus.ToDo,
     };
     this.tasksArray.push(taskObj);
@@ -32,48 +33,9 @@ export class ToDoService {
     return this.toDoTables$.asObservable();
   }
 
-  public changeStateToInProgressAndRemove(task: Task) {
-    task.status = TaskStatus.InProgress;
-    this.inProgressTasksArray.push(task);
-    this.tasksArray = this.tasksArray.filter(
-      (element) => element.id !== task.id
-    );
-    this.updateSubjectTables();
-  }
-
-  public changeStateToDoneAndRemove(task: Task): void {
-    task.status = TaskStatus.Done;
-    this.doneTasksArray.push(task);
-    this.inProgressTasksArray = this.inProgressTasksArray.filter(
-      (element) => element.id !== task.id
-    );
-    this.updateSubjectTables();
-  }
-
-  public deleteTaskFromArray(task: Task): void {
-    switch (task.status) {
-      case TaskStatus.ToDo:
-        this.tasksArray = this.tasksArray.filter(
-          (element) => element.id !== task.id
-        );
-        break;
-      case TaskStatus.InProgress:
-        this.inProgressTasksArray = this.inProgressTasksArray.filter(
-          (element) => element.id !== task.id
-        );
-        break;
-      case TaskStatus.Done:
-        this.doneTasksArray = this.doneTasksArray.filter(
-          (element) => element.id !== task.id
-        );
-        break;
-    }
-    this.updateSubjectTables();
-  }
-
   private updateSubjectTables(): void {
-    const allTasksArray = {
-      tasksArray: this.tasksArray,
+    const allTasksArray: TasksTables = {
+      toDoArray: this.tasksArray,
       inProgressTasksArray: this.inProgressTasksArray,
       doneTasksArray: this.doneTasksArray,
     };

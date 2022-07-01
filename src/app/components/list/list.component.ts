@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Task } from 'src/app/models/task.interface';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import { Component } from '@angular/core';
+import { Task, TasksTables, TaskStatus } from 'src/app/models/task.interface';
+import { ToDoService } from 'src/app/services/to-do.service';
 
 @Component({
   selector: 'app-list',
@@ -7,24 +13,45 @@ import { Task } from 'src/app/models/task.interface';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @Input() public tasksArray: Task[] = [];
-  @Input() public isInprogressButtonVisible: boolean = false;
-  @Input() public isDoneButtonVisible: boolean = false;
-  @Input() public isDeleteButtonVisible: boolean = false;
-  @Output() public toDoClick: EventEmitter<Task> = new EventEmitter<Task>();
-  @Output() public inProgressClick: EventEmitter<Task> =
-    new EventEmitter<Task>();
-  @Output() public deleteClick: EventEmitter<Task> = new EventEmitter<Task>();
+  public allTasksArray: TasksTables = {
+    toDoArray: [],
+    inProgressTasksArray: [],
+    doneTasksArray: [],
+  };
 
-  public onToDoClick(task: Task): void {
-    this.toDoClick.emit(task);
+  constructor(private toDoService: ToDoService) {
+    this.toDoService.getTaskArrayObs().subscribe((allTasksArray) => {
+      this.allTasksArray = allTasksArray;
+    });
   }
 
-  public onImProgressClick(task: Task): void {
-    this.inProgressClick.emit(task);
-  }
+  drop(event: CdkDragDrop<Task[]>) {
+    const droppedElement = event.previousContainer.data[event.previousIndex];
 
-  public onDeleteClick(task: Task): void {
-    this.deleteClick.emit(task);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+    switch (event.container.id) {
+      case 'todo':
+        droppedElement.status = TaskStatus.ToDo;
+        break;
+      case 'inprogress':
+        droppedElement.status = TaskStatus.InProgress;
+        break;
+      case 'done':
+        droppedElement.status = TaskStatus.Done;
+        break;
+    }
   }
 }

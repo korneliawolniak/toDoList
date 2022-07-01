@@ -1,14 +1,15 @@
 <div class="input-box">
-    <mat-form-field class="input" appearance="fill">
-      <mat-label>Task</mat-label>
-      <input matInput type="text" #task>
-    </mat-form-field>
-    <button
-      class="add-button"
-      mat-flat-button
-      color="primary"
-      (click)="emitTask(task)"
-    >
-      Add
-    </button>
-  </div>
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>Task</mat-label>
+    <input matInput type="text" #task (keyup.enter)="emitTask(task)"/>
+  </mat-form-field>
+  <button
+    class="add-button"
+    mat-flat-button
+    color="primary"
+    
+    (click)="emitTask(task)"
+  >
+    Add
+  </button>
+</div>

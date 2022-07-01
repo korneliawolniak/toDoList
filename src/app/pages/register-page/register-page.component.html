@@ -1,31 +1,31 @@
 <mat-card class="main-register-box">
-    <div class="sing-up__header">
-      <div class="sing-up__sing-in">SING IN</div>
-      <div class="sing-up__title">SING UP</div>
-    </div>
-  
-    <form class = "sing-up__input-box">
-      <mat-form-field class="sing-up__login-input" appearance="fill">
-        <mat-label>Login</mat-label>
-        <input matInput placeholder="example@gmail.com" />
-      </mat-form-field>
-  
-      <mat-form-field class="sing-up__password-input" appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" />
-      </mat-form-field>
-      <mat-form-field class="sing-up__password-input" appearance="fill">
-        <mat-label>Repeat password</mat-label>
-        <input matInput placeholder="Repeat password" />
-      </mat-form-field>
-    </form>
-    <button
-      mat-raised-button
-      class="sing-up__button"
-      color="primary"
-      aria-label="Sing in button"
-    >
-      SING UP
-    </button>
-  </mat-card>
-  
+  <div class="sing-up__header">
+    <div class="sing-up__sing-in" (click)="redirectToLoginPage()">SING IN</div>
+    <div class="sing-up__title">SING UP</div>
+  </div>
+
+  <form class="sing-up__input-box">
+    <mat-form-field class="sing-up__login-input" appearance="fill">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="example@gmail.com" />
+    </mat-form-field>
+
+    <mat-form-field class="sing-up__password-input" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" />
+    </mat-form-field>
+    <mat-form-field class="sing-up__password-input" appearance="fill">
+      <mat-label>Repeat password</mat-label>
+      <input matInput placeholder="Repeat password" />
+    </mat-form-field>
+  </form>
+  <button
+    mat-raised-button
+    class="sing-up__button"
+    color="primary"
+    aria-label="Sing in button"
+    (click)="redirectToDashboardPage()"
+  >
+    SING UP
+  </button>
+</mat-card>

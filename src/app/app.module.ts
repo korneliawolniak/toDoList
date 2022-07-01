@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { InputComponent } from './components/input/input.component';
+import { ListComponent } from './components/list/list.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import { RouterModule } from '@angular/router';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { routes } from './services/app.routes';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import { ListComponent } from './components/list/list.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import { TaskComponent } from './components/task/task.component';
-import { FormsModule } from '@angular/forms';
-import { InputComponent } from './components/input/input.component';
 import { ToDoService } from './services/to-do.service';
-
 
 @NgModule({
   declarations: [
@@ -30,8 +28,7 @@ import { ToDoService } from './services/to-do.service';
     DashboardPageComponent,
     ErrorPageComponent,
     ListComponent,
-    TaskComponent,
-    InputComponent
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +43,6 @@ import { ToDoService } from './services/to-do.service';
     RouterModule.forRoot(routes),
   ],
   providers: [ToDoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

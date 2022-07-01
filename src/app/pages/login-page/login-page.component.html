@@ -1,10 +1,12 @@
 <mat-card class="main-login-box">
   <div class="sing-in__header">
     <div class="sing-in__title">SING IN</div>
-    <div class="sing-in__sing-up">SING UP</div>
+    <div class="sing-in__sing-up" (click)="redirectToRegisterPage()">
+      SING UP
+    </div>
   </div>
 
-  <form class = "sing-in__input-box">
+  <form class="sing-in__input-box">
     <mat-form-field class="sing-in__login-input" appearance="fill">
       <mat-label>Login</mat-label>
       <input matInput placeholder="example@gmail.com" />
@@ -20,6 +22,7 @@
     class="sing-in__button"
     color="primary"
     aria-label="Sing in button"
+    (click)="redirectToDashboardPage()"
   >
     SING IN
   </button>

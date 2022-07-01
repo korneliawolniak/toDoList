@@ -1,5 +1,5 @@
 .main-page {
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -18,6 +18,7 @@
   color: white;
   font-size: 70px;
   padding-left: 80px;
+  font-family: sans-serif;
 }
 .logout-button-box {
   display: block;
@@ -25,32 +26,8 @@
   width: 10%;
 }
 
-.lists-box {
-  display: flex;
-  flex: 1 1 auto;
-  overflow-y: scroll;
-  width: 100%;
-  align-items: stretch;
-  justify-content: center;
-  justify-content: space-between;
-}
-.todo-list {
-  height: auto;
-  width: 33%;
-  background-color: plum;
-}
-.inprogress-list {
-  height: auto;
-  background-color: orange;
-  width: 33%;
-}
-.done-list {
-  height: auto;
-  background-color: green;
-  width: 33%;
-}
 .footer {
-  background-color: yellowgreen;
+  background-color: #17368a;
   height: 50px;
   display: flex;
   justify-content: center;
