@@ -1,29 +1,24 @@
 <mat-card class="main-login-box">
-  <div class="sing-in__header">
-    <div class="sing-in__title">SING IN</div>
-    <div class="sing-in__sing-up" (click)="redirectToRegisterPage()">
-      SING UP
+    <div class="sing-in__header">
+        <div class="sing-in__title">SING IN</div>
+        <div class="sing-in__sing-up" (click)="redirectToRegisterPage()">
+            SING UP
+        </div>
     </div>
-  </div>
 
-  <form class="sing-in__input-box">
-    <mat-form-field class="sing-in__login-input" appearance="fill">
-      <mat-label>Login</mat-label>
-      <input matInput placeholder="example@gmail.com" />
-    </mat-form-field>
+    <form class="sing-in__input-box">
+        <mat-form-field class="sing-in__login-input" appearance="fill">
+            <mat-label>Login</mat-label>
+            <input #loginInput matInput placeholder="example@gmail.com" />
+        </mat-form-field>
 
-    <mat-form-field class="sing-in__password-input" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="Password" />
-    </mat-form-field>
-  </form>
-  <button
-    mat-raised-button
-    class="sing-in__button"
-    color="primary"
-    aria-label="Sing in button"
-    (click)="redirectToDashboardPage()"
-  >
+        <mat-form-field class="sing-in__password-input" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input #passwordInput matInput placeholder="Password" />
+        </mat-form-field>
+    </form>
+    <div style="color: crimson" *ngIf="errorMessage">Wrong login or password</div>
+    <button mat-raised-button class="sing-in__button" color="primary" aria-label="Sing in button" (click)="login(loginInput, passwordInput)">
     SING IN
   </button>
 </mat-card>

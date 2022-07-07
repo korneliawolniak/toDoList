@@ -17,8 +17,12 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { routes } from './services/app.routes';
-import { ToDoService } from './services/to-do.service';
+import { routes } from './app.routes';
+import { ToDoService } from './services/to-do/to-do.service';
+import { LoginApiService } from './services/login-api/login-api.service';
+import { LoginService } from './services/login/login.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginGuard } from './services/guard/guard';
 
 @NgModule({
   declarations: [
@@ -41,8 +45,9 @@ import { ToDoService } from './services/to-do.service';
     MatInputModule,
     DragDropModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
-  providers: [ToDoService],
+  providers: [ToDoService, LoginService, LoginApiService, LoginGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

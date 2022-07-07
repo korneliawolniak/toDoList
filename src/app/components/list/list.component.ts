@@ -3,9 +3,16 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
-import { Task, TasksTables, TaskStatus } from 'src/app/models/task.interface';
-import { ToDoService } from 'src/app/services/to-do.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { Task } from 'src/app/models/task.interface';
 
 @Component({
   selector: 'app-list',
@@ -13,45 +20,18 @@ import { ToDoService } from 'src/app/services/to-do.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  public allTasksArray: TasksTables = {
-    toDoArray: [],
-    inProgressTasksArray: [],
-    doneTasksArray: [],
-  };
+  @Input() public allTasks: any;
+  @Output() public dropedTask = new EventEmitter<any>();
+  @Output() public taskToDelete = new EventEmitter<any>();
 
-  constructor(private toDoService: ToDoService) {
-    this.toDoService.getTaskArrayObs().subscribe((allTasksArray) => {
-      this.allTasksArray = allTasksArray;
-    });
+  public drop(event: CdkDragDrop<Task[]>) {
+    const previousList = event.previousContainer.id;
+    const currentList = event.container.id;
+    const dropedTask = event.previousContainer.data[event.previousIndex];
+    const obj = { previousList, currentList, dropedTask };
+    this.dropedTask.emit(obj);
   }
-
-  drop(event: CdkDragDrop<Task[]>) {
-    const droppedElement = event.previousContainer.data[event.previousIndex];
-
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-    switch (event.container.id) {
-      case 'todo':
-        droppedElement.status = TaskStatus.ToDo;
-        break;
-      case 'inprogress':
-        droppedElement.status = TaskStatus.InProgress;
-        break;
-      case 'done':
-        droppedElement.status = TaskStatus.Done;
-        break;
-    }
+  public emitTask(task: any) {
+    this.taskToDelete.emit(task);
   }
 }

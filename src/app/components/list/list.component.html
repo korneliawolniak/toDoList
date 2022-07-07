@@ -1,67 +1,38 @@
-<main class="main-page">
-  <section class="lists-box">
-    <div class="todo-list-box">
-      <h2>To do</h2>
+<main class="main-page" *ngIf="allTasks">
+    <section class="lists-box">
+        <div class="todo-list-box">
+            <h2>To do</h2>
 
-      <div
-        cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="allTasksArray.toDoArray"
-        [cdkDropListConnectedTo]="[inProgressList, doneList]"
-        class="list"
-        (cdkDropListDropped)="drop($event)"
-        id="todo"
-      >
-        <div class="task" *ngFor="let task of allTasksArray.toDoArray" cdkDrag>
-          <div class="task-description">{{ task.description }}</div>
-          <div class="task-status">{{ task.status }}</div>
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="allTasks.toDoArray" [cdkDropListConnectedTo]="[inProgressList, doneList]" class="list" (cdkDropListDropped)="drop($event)" id="toDoArray">
+                <div class="task" *ngFor="let task of allTasks.toDoArray" cdkDrag>
+                    <div class="task-description">{{ task.description }}</div>
+                    <div class="task-status">{{ task.status }}</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="inprogress-list-box">
-      <h2>In progress</h2>
+        <div class="inprogress-list-box">
+            <h2>In progress</h2>
 
-      <div
-        cdkDropList
-        #inProgressList="cdkDropList"
-        [cdkDropListData]="allTasksArray.inProgressTasksArray"
-        [cdkDropListConnectedTo]="[todoList, doneList]"
-        class="list"
-        (cdkDropListDropped)="drop($event)"
-        id="inprogress"
-      >
-        <div
-          class="task"
-          *ngFor="let task of allTasksArray.inProgressTasksArray"
-          cdkDrag
-        >
-          <div class="task-description">{{ task.description }}</div>
-          <div class="task-status">{{ task.status }}</div>
+            <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="allTasks.inProgressTasksArray" [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)" id="inProgressTasksArray">
+                <div class="task" *ngFor="let task of allTasks.inProgressTasksArray" cdkDrag>
+                    <div class="task-description">{{ task.description }}</div>
+                    <div class="task-status">{{ task.status }}</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="done-list-box">
-      <h2>Done</h2>
+        <div class="done-list-box">
+            <h2>Done</h2>
 
-      <div
-        cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="allTasksArray.doneTasksArray"
-        [cdkDropListConnectedTo]="[inProgressList, todoList]"
-        class="list"
-        (cdkDropListDropped)="drop($event)"
-        id="done"
-      >
-        <div
-          class="task"
-          *ngFor="let task of allTasksArray.doneTasksArray"
-          cdkDrag
-        >
-          <div class="task-description">{{ task.description }}</div>
-          <div class="task-status">{{ task.status }}</div>
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="allTasks.doneTasksArray" [cdkDropListConnectedTo]="[inProgressList, todoList]" class="list" (cdkDropListDropped)="drop($event)" id="doneTasksArray">
+                <div class="task" *ngFor="let task of allTasks.doneTasksArray" cdkDrag>
+                    <div class="task-description">{{ task.description }}</div>
+                    <div class="task-status">{{ task.status }}</div>
+                    <button class="delete-button" mat-flat-button color="white" (click)="emitTask(task)">
+            Delete
+          </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </main>

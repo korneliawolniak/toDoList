@@ -1,94 +1,109 @@
 .main-page {
-  height: 700px;
-  display: flex;
-  flex-direction: column;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
 }
+
 h2 {
-  font-size: 30px;
-  text-align: center;
-  padding-top: 20px;
-  font-family: sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+    font-family: sans-serif;
 }
 
 .lists-box {
-  display: flex;
-  flex: 1 1 auto;
-  overflow-y: scroll;
-  width: 100%;
-  align-items: stretch;
-  justify-content: center;
-  justify-content: space-between;
+    display: flex;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    justify-content: space-between;
 }
+
 .todo-list-box {
-  height: auto;
-  width: 33%;
-  border: solid 1px #ccc;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+    height: auto;
+    width: 33%;
+    border: solid 1px #ccc;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
 }
+
 .inprogress-list-box {
-  height: auto;
-  width: 33%;
-  border: solid 1px #ccc;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+    height: auto;
+    width: 33%;
+    border: solid 1px #ccc;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
 }
+
 .done-list-box {
-  height: auto;
-  width: 33%;
-  border: solid 1px #ccc;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+    height: auto;
+    width: 33%;
+    border: solid 1px #ccc;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
 }
+
 .list {
-  border: solid 1px #ccc;
-  height: 100%;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+    border: solid 1px #ccc;
+    height: calc(100% - 80px);
+    overflow-y: scroll !important;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
 }
+
 .task {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: #17368a;
-  font-size: 14px;
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: #17368a;
+    font-size: 14px;
 }
+
 .task-description {
-  font-size: 25px;
+    font-size: 25px;
 }
+
 .task-status {
-  font-size: 15px;
+    font-size: 15px;
 }
+
+.delete-button {
+    display: flex;
+    align-self: center;
+    height: 20px;
+    align-items: center;
+}
+
 .cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
-  opacity: 0;
+    opacity: 0;
 }
 
 .cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .list.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-

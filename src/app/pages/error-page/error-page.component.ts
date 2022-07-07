@@ -10,6 +10,6 @@ export class ErrorPageComponent {
   constructor(private router: Router) {}
 
   public redirect() {
-    this.router.navigate(['./dashboard']);
+    this.router.navigate(['./login']);
   }
 }

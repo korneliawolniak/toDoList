@@ -1,21 +1,15 @@
 <main class="main-page">
-  <header class="header-box">
-    <div class="header-title">TO DO LIST</div>
-    <div class="logout-button-box">
-      <button
-        class="logout-button"
-        mat-fab
-        color="primary"
-        aria-label="Icon button with a logout icon"
-        (click)="redirectToLoginPage()"
-      >
+    <header class="header-box">
+        <div class="header-title">TO DO LIST</div>
+        <div class="logout-button-box">
+            <button class="logout-button" mat-fab color="primary" aria-label="Icon button with a logout icon" (click)="redirectToLoginPage()">
         <mat-icon>power_settings_new</mat-icon>
       </button>
-    </div>
-  </header>
+        </div>
+    </header>
 
-  <app-input (eventTask)="handleEventTask($event)"></app-input>
-  <app-list></app-list>
+    <app-input (eventTask)="handleEventTask($event)"></app-input>
+    <app-list [allTasks]="tasks$ | async" (dropedTask)="getDroppedTask($event)" (taskToDelete)="deleteTask($event)"></app-list>
 
-  <footer class="footer">USER</footer>
+    <footer class="footer">{{ user }}</footer>
 </main>
