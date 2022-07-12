@@ -34,6 +34,3 @@ module.exports = {
         },
     ],
 };
-// create new todo file for backend
-// create new end point (api) for todos (should contain id - see query params express)
-// backend should search for login and return todos

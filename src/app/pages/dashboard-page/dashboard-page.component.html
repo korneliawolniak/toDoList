@@ -2,7 +2,7 @@
     <header class="header-box">
         <div class="header-title">TO DO LIST</div>
         <div class="logout-button-box">
-            <button class="logout-button" mat-fab color="primary" aria-label="Icon button with a logout icon" (click)="redirectToLoginPage()">
+            <button class="logout-button" mat-fab color="primary" aria-label="Icon button with a logout icon" [routerLink]="['/login']">
         <mat-icon>power_settings_new</mat-icon>
       </button>
         </div>

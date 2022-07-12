@@ -8,20 +8,19 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  public errorMessage: boolean = false;
+  public errorMessage = false;
 
   constructor(
     private readonly router: Router,
     private readonly loginService: LoginService
   ) {}
 
-  public redirectToRegisterPage() {
-    this.router.navigate(['./register']);
-  }
-
-  public login(loginInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    const login = loginInput.value;
-    const password = passwordInput.value;
+  public login(
+    loginInput: HTMLInputElement,
+    passwordInput: HTMLInputElement
+  ): void {
+    let login = loginInput.value;
+    let password = passwordInput.value;
 
     this.loginService.login(login, password).subscribe({
       next: (data: any) => {

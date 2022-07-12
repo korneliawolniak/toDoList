@@ -7,7 +7,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class InputComponent {
   @Output() public eventTask: EventEmitter<string> = new EventEmitter<string>();
-  task = '';
 
   public emitTask(task: HTMLInputElement): void {
     this.eventTask.emit(task.value);

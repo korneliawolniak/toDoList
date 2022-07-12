@@ -4,9 +4,12 @@ import { LoginService } from '../login/login.service';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
-  constructor(private loginService: LoginService, private routes: Router) {}
+  constructor(
+    private readonly loginService: LoginService,
+    private readonly routes: Router
+  ) {}
 
-  canActivate(): boolean | UrlTree {
+  public canActivate(): boolean | UrlTree {
     if (this.loginService.loginValue !== '') {
       return true;
     } else {

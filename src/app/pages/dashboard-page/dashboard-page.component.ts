@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, switchMapTo } from 'rxjs';
+import { Task, TasksTables } from 'src/app/models/task.interface';
 import { LoginService } from 'src/app/services/login/login.service';
 import { ToDoService } from 'src/app/services/to-do/to-do.service';
 
@@ -10,23 +10,17 @@ import { ToDoService } from 'src/app/services/to-do/to-do.service';
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent {
-  public allTasks: any;
   public user = this.loginService.loginValue;
-  public tasks$: Observable<any>;
+  public tasks$: Observable<Object>;
 
   constructor(
     private toDoService: ToDoService,
-    private router: Router,
     private loginService: LoginService
   ) {
     this.tasks$ = this.toDoService.getTasks();
   }
 
-  public redirectToLoginPage() {
-    this.router.navigate(['./login']);
-  }
-
-  public getDroppedTask(task: any) {
+  public getDroppedTask(task: Object): void {
     this.tasks$ = this.toDoService
       .moveTask(task)
       .pipe(switchMapTo(this.toDoService.getTasks()));
@@ -37,7 +31,7 @@ export class DashboardPageComponent {
       .createTask(task)
       .pipe(switchMapTo(this.toDoService.getTasks()));
   }
-  public deleteTask(task: any) {
+  public deleteTask(task: Task): void {
     this.tasks$ = this.toDoService
       .deleteTask(task)
       .pipe(switchMapTo(this.toDoService.getTasks()));

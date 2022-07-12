@@ -28,7 +28,7 @@
                 <div class="task" *ngFor="let task of allTasks.doneTasksArray" cdkDrag>
                     <div class="task-description">{{ task.description }}</div>
                     <div class="task-status">{{ task.status }}</div>
-                    <button class="delete-button" mat-flat-button color="white" (click)="emitTask(task)">
+                    <button class="delete-button" mat-flat-button color="white" (click)="onDelete(task)">
             Delete
           </button>
                 </div>

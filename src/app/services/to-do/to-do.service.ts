@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Task, TaskStatus } from '../../models/task.interface';
-import * as uuid from 'uuid';
+import { Task } from '../../models/task.interface';
 import { ToDoApiService } from '../to-do-api/to-do-api.service';
 import { LoginService } from '../login/login.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,25 +13,22 @@ export class ToDoService {
     private readonly loginservice: LoginService
   ) {}
 
-  public getTasks(): any {
+  public getTasks(): Observable<Object> {
     const login = this.loginservice.loginValue;
     return this.api.getTasks(login);
   }
 
-  public createTask(task: string): any {
-    const taskObj: Task = {
-      id: uuid.v4(),
-      description: task[0].toUpperCase() + task.substring(1) + '!',
-      status: TaskStatus.ToDo,
-    };
+  public createTask(task: string): Observable<Object> {
     const login = this.loginservice.loginValue;
-    return this.api.createTask(login, taskObj);
+    return this.api.createTask(login, task);
   }
-  public moveTask(task: any): any {
+
+  public moveTask(task: Object): Observable<Object> {
     const login = this.loginservice.loginValue;
     return this.api.moveTask(login, task);
   }
-  public deleteTask(task: any): any {
+
+  public deleteTask(task: Task): Observable<Object> {
     const login = this.loginservice.loginValue;
     return this.api.deleteTask(login, task);
   }

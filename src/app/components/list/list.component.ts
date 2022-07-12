@@ -1,18 +1,7 @@
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import { Task } from 'src/app/models/task.interface';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Task, TasksTables } from 'src/app/models/task.interface';
 
 @Component({
   selector: 'app-list',
@@ -20,18 +9,18 @@ import { Task } from 'src/app/models/task.interface';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @Input() public allTasks: any;
-  @Output() public dropedTask = new EventEmitter<any>();
-  @Output() public taskToDelete = new EventEmitter<any>();
+  @Input() public allTasks: any | undefined;
+  @Output() public dropedTask = new EventEmitter<Object>();
+  @Output() public taskToDelete = new EventEmitter<Task>();
 
-  public drop(event: CdkDragDrop<Task[]>) {
+  public drop(event: CdkDragDrop<Task[]>): void {
     const previousList = event.previousContainer.id;
     const currentList = event.container.id;
     const dropedTask = event.previousContainer.data[event.previousIndex];
-    const obj = { previousList, currentList, dropedTask };
-    this.dropedTask.emit(obj);
+    const droppedTaskWithData = { previousList, currentList, dropedTask };
+    this.dropedTask.emit(droppedTaskWithData);
   }
-  public emitTask(task: any) {
+  public onDelete(task: Task): void {
     this.taskToDelete.emit(task);
   }
 }

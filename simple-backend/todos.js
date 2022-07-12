@@ -1,4 +1,6 @@
 const db = require("./db");
+const uuid = ({ v4: uuidv4 } = require("uuid"));
+
 module.exports = function(server) {
     server.get("/tasks/:login", (req, res) => {
         let tasksForFrontend = undefined;
@@ -13,29 +15,38 @@ module.exports = function(server) {
                 doneTasksArray: [],
             },
         };
+
         db.tasks.forEach((el) => {
             if (el.login === loginValue) {
                 tasksForFrontend = el.todos;
             }
         });
+
         if (tasksForFrontend === undefined) {
             db.tasks.push(defaultObj);
             tasksForFrontend = defaultObj.todos;
         }
         res.send({...tasksForFrontend });
     });
+
     server.post("/tasks", (req, res) => {
         const login = req.body.login;
         const task = req.body.task;
+        const taskObj = {
+            id: uuidv4(),
+            description: task[0].toUpperCase() + task.substring(1) + "!",
+            status: "To do",
+        };
 
         db.tasks.forEach((el) => {
             if (el.login === login) {
-                el.todos.toDoArray.push(task);
+                el.todos.toDoArray.push(taskObj);
             }
         });
 
         res.send({ status: "Created" });
     });
+
     server.put("/task-move", (req, res) => {
         const login = req.body.login;
         const task = req.body.task;
@@ -57,36 +68,22 @@ module.exports = function(server) {
                         task.dropedTask.status = "Done";
                         break;
                 }
-
                 el.todos[current].push(task.dropedTask);
-
                 res.send({ status: "Moved" });
             }
         });
     });
+
     server.put("/task-delete", (req, res) => {
         const login = req.body.login;
         const task = req.body.task;
         db.tasks.forEach((el) => {
             if (el.login === login) {
-                switch (task.status) {
-                    case "To do":
-                        el.todos.toDoArray = el.todos.toDoArray.filter(
-                            (el) => el.id !== task.id
-                        );
-                        break;
-                    case "In progress":
-                        el.todos.inProgressTasksArray =
-                            el.todos.inProgressTasksArray.filter((el) => el.id !== task.id);
-                        break;
-                    case "Done":
-                        el.todos.doneTasksArray = el.todos.doneTasksArray.filter(
-                            (el) => el.id !== task.id
-                        );
-                        break;
-                }
-                res.send({ status: "Deleted" });
+                el.todos.doneTasksArray = el.todos.doneTasksArray.filter(
+                    (el) => el.id !== task.id
+                );
             }
         });
+        res.send({ status: "Deleted" });
     });
 };
