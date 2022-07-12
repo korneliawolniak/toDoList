@@ -31,10 +31,10 @@ export class RegisterPageComponent {
     } else {
       this.differentPasswordMessage = false;
       this.loginService.register(login, password).subscribe({
-        next: (data: any) => {
+        next: () => {
           this.router.navigate(['./login']);
         },
-        error: (error) => {
+        error: () => {
           this.router.navigate(['./error']);
         },
       });

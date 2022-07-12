@@ -8,9 +8,7 @@ module.exports = function(server) {
         const defaultObj = {
             login: loginValue,
             todos: {
-                toDoArray: [
-                    { id: "2", description: "Default Done1 nowy", status: "Done" },
-                ],
+                toDoArray: [],
                 inProgressTasksArray: [],
                 doneTasksArray: [],
             },
@@ -55,20 +53,20 @@ module.exports = function(server) {
         db.tasks.forEach((el) => {
             if (el.login === login) {
                 el.todos[previous] = el.todos[previous].filter(
-                    (el) => el.id !== task.dropedTask.id
+                    (el) => el.id !== task.droppedTask.id
                 );
                 switch (current) {
                     case "toDoArray":
-                        task.dropedTask.status = "To do";
+                        task.droppedTask.status = "To do";
                         break;
                     case "inProgressTasksArray":
-                        task.dropedTask.status = "In progress";
+                        task.droppedTask.status = "In progress";
                         break;
                     case "doneTasksArray":
-                        task.dropedTask.status = "Done";
+                        task.droppedTask.status = "Done";
                         break;
                 }
-                el.todos[current].push(task.dropedTask);
+                el.todos[current].push(task.droppedTask);
                 res.send({ status: "Moved" });
             }
         });

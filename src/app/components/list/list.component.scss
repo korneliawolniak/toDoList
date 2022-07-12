@@ -1,54 +1,32 @@
-.main-page {
-    height: 700px;
+.dashboard {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-h2 {
-    font-size: 30px;
-    text-align: center;
-    padding-top: 20px;
-    font-family: sans-serif;
-}
-
-.lists-box {
+.lists {
     display: flex;
-    flex: 1 1 auto;
-    overflow-y: scroll;
     width: 100%;
+    height: calc(100% - 80px);
     align-items: stretch;
     justify-content: center;
     justify-content: space-between;
 }
 
-.todo-list-box {
+.list-box {
     height: auto;
     width: 33%;
     border: solid 1px #ccc;
     background: white;
-    border-radius: 4px;
     overflow: hidden;
     display: block;
-}
-
-.inprogress-list-box {
-    height: auto;
-    width: 33%;
-    border: solid 1px #ccc;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-}
-
-.done-list-box {
-    height: auto;
-    width: 33%;
-    border: solid 1px #ccc;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
+    h2 {
+        font-size: 30px;
+        white-space: nowrap;
+        text-align: center;
+        padding-top: 20px;
+        font-family: sans-serif;
+    }
 }
 
 .list {
@@ -69,25 +47,21 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
     cursor: move;
     background: #17368a;
     font-size: 14px;
-}
-
-.task-description {
-    font-size: 25px;
-}
-
-.task-status {
-    font-size: 15px;
-}
-
-.delete-button {
-    display: flex;
-    align-self: center;
-    height: 20px;
-    align-items: center;
+    &__description {
+        font-size: 25px;
+    }
+    &__status {
+        font-size: 15px;
+    }
+    &__delete-button {
+        display: flex;
+        align-self: center;
+        height: 20px;
+        align-items: center;
+    }
 }
 
 .cdk-drag-preview {

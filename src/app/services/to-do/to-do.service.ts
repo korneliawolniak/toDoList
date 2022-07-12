@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../../models/task.interface';
-import { ToDoApiService } from '../to-do-api/to-do-api.service';
-import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
+import { DroppedTask, Task, TasksTables } from '../../models/task.interface';
+import { LoginService } from '../login/login.service';
+import { ToDoApiService } from '../to-do-api/to-do-api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class ToDoService {
     private readonly loginservice: LoginService
   ) {}
 
-  public getTasks(): Observable<Object> {
+  public getTasks(): Observable<TasksTables> {
     const login = this.loginservice.loginValue;
     return this.api.getTasks(login);
   }
@@ -23,7 +23,7 @@ export class ToDoService {
     return this.api.createTask(login, task);
   }
 
-  public moveTask(task: Object): Observable<Object> {
+  public moveTask(task: DroppedTask): Observable<Object> {
     const login = this.loginservice.loginValue;
     return this.api.moveTask(login, task);
   }

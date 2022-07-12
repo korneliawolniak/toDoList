@@ -9,7 +9,9 @@ export class InputComponent {
   @Output() public eventTask: EventEmitter<string> = new EventEmitter<string>();
 
   public emitTask(task: HTMLInputElement): void {
-    this.eventTask.emit(task.value);
-    task.value = '';
+    if (task.value) {
+      this.eventTask.emit(task.value);
+      task.value = '';
+    }
   }
 }

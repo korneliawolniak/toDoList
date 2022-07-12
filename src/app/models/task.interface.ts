@@ -4,6 +4,12 @@ export interface Task {
   status: TaskStatus;
 }
 
+export interface DroppedTask {
+  previousList: string;
+  currentList: string;
+  droppedTask: Task;
+}
+
 export interface TasksTables {
   toDoArray: Task[];
   inProgressTasksArray: Task[];

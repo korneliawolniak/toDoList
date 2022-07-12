@@ -23,10 +23,10 @@ export class LoginPageComponent {
     let password = passwordInput.value;
 
     this.loginService.login(login, password).subscribe({
-      next: (data: any) => {
+      next: () => {
         this.router.navigate(['./dashboard']);
       },
-      error: (error) => {
+      error: () => {
         this.errorMessage = true;
         loginInput.value = '';
         passwordInput.value = '';
