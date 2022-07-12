@@ -1,0 +1,15 @@
+.input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    &__input {
+        width: 50%;
+        padding-top: 15px;
+    }
+    &__add-button {
+        height: 50px;
+        width: 100px;
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,31 @@
+<mat-card class="main-register-box">
+    <div class="sing-up__header">
+        <div class="sing-up__sing-in" [routerLink]="['/login']">SING IN</div>
+        <div class="sing-up__title">SING UP</div>
+    </div>
+
+    <form class="sing-up__input-box">
+        <mat-form-field class="sing-up__login-input" appearance="fill">
+            <mat-label>Login</mat-label>
+            <input #loginInput matInput placeholder="example@gmail.com" required />
+        </mat-form-field>
+
+        <mat-form-field class="sing-up__password-input" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input #passwordInput matInput type="password" placeholder="Password" required />
+        </mat-form-field>
+        <mat-form-field class="sing-up__password-input" appearance="fill">
+            <mat-label>Repeat password</mat-label>
+            <input #repeatedPasswordInput matInput type="password" placeholder="Repeat password" required />
+        </mat-form-field>
+    </form>
+    <div style="color: crimson" *ngIf="differentPasswordMessage">
+        Passwords aren't the same
+    </div>
+    <div style="color: crimson" *ngIf="wrongTypePasswordMessage">
+        Login and password can't be just a space
+    </div>
+    <button mat-raised-button class="sing-up__button" color="primary" aria-label="Sing in button" (click)="register(loginInput, passwordInput, repeatedPasswordInput)">
+    SING UP
+  </button>
+</mat-card>

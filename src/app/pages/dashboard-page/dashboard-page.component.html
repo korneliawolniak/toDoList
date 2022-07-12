@@ -1,0 +1,14 @@
+<main class="main-page">
+    <header class="header-box">
+        <h1 class="header-title">TO DO LIST</h1>
+        <button class="logout-button" mat-fab color="primary" aria-label="Icon button with a logout icon" [routerLink]="['/login']">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
+    </header>
+    <div class="main-page__content">
+        <app-input (eventTask)="handleEventTask($event)"></app-input>
+        <app-list *ngIf="tasks$ | async as allTasks" [allTasks]="allTasks" (droppedTask)="getDroppedTask($event)" (taskToDelete)="deleteTask($event)"></app-list>
+    </div>
+
+    <footer class="footer">{{ user }}</footer>
+</main>
